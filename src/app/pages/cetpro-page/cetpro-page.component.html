@@ -1,0 +1,63 @@
+<section>
+<section class="w-full h-full flex flex-row  bg-neutral-50">
+
+    <section class="w-1/6 h-full bg-neutral-200">
+
+    </section>
+
+    <section class="w-5/6 h-full flex flex-col gap-y-6">
+
+        <section class="w-2/6 text-center bg-blue-500 rounded-br-3xl py-2 shadow-md">
+            <h2 class="text-xl font-medium text-white">Listado de Cetpro</h2>
+        </section>
+
+        <section class="w-full h-fit flex justify-center text-white">
+
+            <div class="w-5/6 h-full px-7 py-3 inline-flex justify-between rounded-3xl shadow-md bg-white">
+
+                <div class="inline-flex gap-x-2">
+                    <input (input)="searchData()" type="text"
+                        class="w-96 h-10 px-3 rounded-3xl border-2 border-gray-100 text-black focus:outline-none focus:border-blue-300"
+                        placeholder="Buscar por nombre" [(ngModel)]="searchTerm" />
+
+                    <button (click)="searchData()" class="bg-blue-500 hover:bg-blue-600 px-3 rounded-full group">
+                        <app-icons name="search" />
+                    </button>
+
+                    <button (click)="onShowForm()"
+                        class="inline-flex items-center gap-x-2 bg-blue-500 hover:bg-blue-600 px-3 rounded-full group">
+                        <app-icons name="plus" /> Nuevo
+                    </button>
+                </div>
+
+                <div class="inline-flex gap-x-2">
+                    <button *ngIf="!showBtn" (click)="fetchDataActive()"
+                        class="inline-flex items-center gap-x-2 bg-blue-500 hover:bg-blue-600  py-2 px-4 rounded-3xl group">
+                        <app-icons name="backup" /> Restaurar
+                    </button>
+
+                    <button *ngIf="showBtn" (click)="fetchData()"
+                        class="bg-blue-500  hover:bg-blue-600 p-2 rounded-full group">
+                        <app-icons name="back" /> 
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="w-full h-auto flex justify-center">
+
+            <div class="w-5/6 h-full p-3 rounded-3xl shadow-xl bg-white">
+                <app-list-cetpro [data]="list" (editItemEvent)="onEditItem($event)"
+                    (changeStateEvent)="refreshData($event)" />
+            </div>
+
+            <app-form-cetpro *ngIf="showForm" [item]="selectedItem" [editMode]="editMode"
+                (closeFormEvent)="onCloseForm()" (dataSavedEvent)="fetchData()" />
+
+        </section>
+
+    </section>
+</section>
+</section>

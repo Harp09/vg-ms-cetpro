@@ -1,0 +1,69 @@
+<section class="w-full indent-4 h-full fixed inset-0 flex items-center bg-zinc-900/35">
+    <form class="flex flex-col w-2/6 m-auto bg-white rounded-3xl shadow-xl" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <section class="text-center w-4/6 bg-blue-500 rounded-br-3xl py-2 shadow-xl">
+            <h2 class="text-xl font-medium text-white">{{ editMode ? 'Editar CETPRO' : 'Nuevo CETPRO' }}</h2>
+        </section>
+
+        <section class="p-4">
+
+            <div class="mb-4">
+                <label class="block text-blue-400 font-bold mb-2">Nombre:</label>
+                <input type="text" class="bg-gray-100 rounded-2xl py-1 h-10 w-full indent-4 focus:outline-none border"
+                    [ngClass]="{'border-red-500': isFieldInvalid('name'), 'border-green-500': isFieldValid('name')}"
+                    formControlName="name" required>
+                <div *ngIf="isFieldInvalid('name')" class="text-red-600">
+                    <div *ngIf="form.get('name')?.errors?.['required']">Nombre es requerido.</div>
+                    <div *ngIf="form.get('name')?.errors?.['minlength']">Nombre debe tener al menos 3 caracteres.</div>
+                    <div *ngIf="form.get('name')?.errors?.['pattern']">Nombre debe contener solo letras mayúsculas.</div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-blue-400 font-bold mb-2">Código Modular:</label>
+                <input type="text" class="bg-gray-100 rounded-2xl py-1 h-10 w-full indent-4 focus:outline-none border"
+                    [ngClass]="{'border-red-500': isFieldInvalid('modularCode'), 'border-green-500': isFieldValid('modularCode')}"
+                    formControlName="modularCode" required>
+                <div *ngIf="isFieldInvalid('modularCode')" class="text-red-600">
+                    <div *ngIf="form.get('modularCode')?.errors?.['required']">Código Modular es requerido.</div>
+                    <div *ngIf="form.get('modularCode')?.errors?.['minlength']">Código Modular debe tener 7 dígitos.
+                    </div>
+                    <div *ngIf="form.get('modularCode')?.errors?.['maxlenght']">Código Modular debe tener 7 dígitos.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-blue-400 font-bold mb-2">DRE/GRE:</label>
+                <input type="text" class="bg-gray-100 rounded-2xl py-1 h-10 w-full indent-4 focus:outline-none border"
+                    [ngClass]="{'border-red-500': isFieldInvalid('dreGre'), 'border-green-500': isFieldValid('dreGre')}"
+                    formControlName="dreGre" required>
+                <div *ngIf="isFieldInvalid('dreGre')" class="text-red-600">
+                    <div *ngIf="form.get('dreGre')?.errors?.['required']">DRE/GRE es requerido.</div>
+                    <div *ngIf="form.get('dreGre')?.errors?.['pattern']">DRE/GRE solo contiene letras.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-blue-400 font-bold mb-2">Tipo de Gestión:</label>
+                <select class="bg-gray-100 rounded-2xl py-1 h-10 w-full indent-4 focus:outline-none border"
+                    [ngClass]="{'border-red-500': isFieldInvalid('managementType'), 'border-green-500': isFieldValid('managementType')}"
+                    formControlName="managementType" required>
+                    <option value="Público">Público</option>
+                    <option value="Privado">Privado</option>
+                    <option value="Convenio">Convenio</option>
+                </select>
+                <div *ngIf="isFieldInvalid('managementType')" class="text-red-600">
+                    <div *ngIf="form.get('managementType')?.errors?.['required']">Seleccione una opción</div>
+                </div>
+            </div>
+
+            <div class="flex flex-row justify-center gap-x-4">
+                <button (click)="onCloseForm()" type="button"
+                    class="font-medium py-2 px-4 rounded-xl border border-blue-500 text-blue-500 hover:bg-blue-700 hover:text-white">Cancelar</button>
+                <button [disabled]="form.invalid" type="submit"
+                    class="font-medium py-2 px-4 rounded-xl text-white bg-blue-500 hover:bg-blue-700">Guardar</button>
+            </div>
+        </section>
+    </form>
+</section>
