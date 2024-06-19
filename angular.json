@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "vg-ms-cetpro_fe": {
+    "cetpro": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/vg-ms-cetpro_fe",
+            "outputPath": "dist/cetpro",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -81,10 +81,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "vg-ms-cetpro_fe:build:production"
+              "browserTarget": "cetpro:build:production"
             },
             "development": {
-              "browserTarget": "vg-ms-cetpro_fe:build:development"
+              "browserTarget": "cetpro:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -92,7 +92,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "vg-ms-cetpro_fe:build"
+            "browserTarget": "cetpro:build"
           }
         },
         "test": {
@@ -117,6 +117,6 @@
     }
   },
   "cli": {
-    "analytics": "19c1c605-2188-48aa-8a93-404194ca9e9a"
+    "analytics": "760f1404-5e93-4503-9e9c-194478d86af5"
   }
 }

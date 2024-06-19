@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ExportAsConfig, ExportAsService } from 'ngx-export-as';
 import { ToastrService } from 'ngx-toastr';
 import { Cetpro } from 'src/app/interfaces/Cetpro';
-import { ApiService } from 'src/app/service/api-service.service';
+import { ApiService } from 'src/app/services/api-service.service';
 
 @Component({
   selector: 'app-list-cetpro',

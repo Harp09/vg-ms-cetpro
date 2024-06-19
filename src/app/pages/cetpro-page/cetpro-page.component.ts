@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cetpro } from 'src/app/interfaces/Cetpro';
-import { ApiService } from 'src/app/service/api-service.service';
+import { ApiService } from './../../services/api-service.service';
 
 @Component({
   selector: 'app-cetpro-page',
